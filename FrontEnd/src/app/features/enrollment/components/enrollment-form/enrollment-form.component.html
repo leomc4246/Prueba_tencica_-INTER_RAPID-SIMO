@@ -1,0 +1,33 @@
+<mat-card>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <!-- Estudiante a matricular -->
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Estudiante</mat-label>
+      <mat-select formControlName="studentId" required>
+        <mat-option *ngFor="let st of students" [value]="st.id">
+          {{ st.fullName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Materias (máx. 3, profesores distintos) -->
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>Selecciona 3 materias</mat-label>
+      <mat-select formControlName="subjectIds" multiple>
+        <mat-option *ngFor="let sb of subjects" [value]="sb.id">
+          {{ sb.name }} — Prof. {{ sb.professor }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary"
+            type="submit"
+            [disabled]="form.invalid">
+      Matricular
+    </button>
+
+  </form>
+
+</mat-card>

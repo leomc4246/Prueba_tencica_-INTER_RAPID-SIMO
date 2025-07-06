@@ -1,0 +1,18 @@
+<mat-card *ngFor="let item of schedule" class="subject-card">
+  <mat-card-title>
+    {{ item.subject }} — {{ item.professor }}
+  </mat-card-title>
+
+  <mat-card-content>
+    <strong>Compañeros:</strong>
+    <ng-container *ngIf="item.peers?.length; else noPeers">
+      <span *ngFor="let peer of item.peers; let last = last">
+        {{ peer }}<ng-container *ngIf="!last">, </ng-container>
+      </span>
+    </ng-container>
+
+    <ng-template #noPeers>
+      <em>Sin compañeros</em>
+    </ng-template>
+  </mat-card-content>
+</mat-card>

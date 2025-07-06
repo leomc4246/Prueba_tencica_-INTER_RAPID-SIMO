@@ -1,0 +1,28 @@
+
+<mat-card>
+
+  <mat-card-header>
+    <mat-card-title class="d-flex justify-between w-100">
+      <span>Lista de Estudiantes</span>
+
+
+      <button mat-raised-button color="primary"
+              [routerLink]="['/students/crud']">
+        <mat-icon class="mr-1">manage_accounts</mat-icon>
+        Gestión
+      </button>
+    </mat-card-title>
+  </mat-card-header>
+
+
+  <mat-card-content>
+    <mat-nav-list>
+      <a  mat-list-item
+          *ngFor="let st of students"
+          [routerLink]="[st.id]">
+        {{ st.fullName }}
+      </a>
+    </mat-nav-list>
+  </mat-card-content>
+
+</mat-card>
